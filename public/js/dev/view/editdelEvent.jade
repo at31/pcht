@@ -1,0 +1,34 @@
+﻿#modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog(role='document')
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-label='Close')
+					span(aria-hidden='true') ×
+				h4#myModalLabel.modal-title Редактирование/удаление
+			.modal-body
+				form(action='')
+					.form-group
+						label(for='') заголовок
+						input#event-title.form-control(type='text')
+					.form-group
+						label(for='') начало
+						input#datebegin.form-control.flatpickr(type='text')
+					.form-group
+						label(for='') окончание
+						input#dateend.form-control.flatpickr(type='text')
+					.form-group
+						label(for='') отделение получатель
+						input#postcode.form-control(type='text')
+					.form-group
+						label(for='') описание
+						input#description.form-control(type='text')
+					.form-group
+						label(for='') статус
+						input#status.form-control(type='text')
+					.form-group
+						label(for='') исполнитель
+						input#executor.form-control(type='text')
+			.modal-footer
+				button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+				button#save-event-btn.btn.btn-primary(type='button') Save changes
+				button#delete-event-btn.btn.btn-danger(type='button') Delete

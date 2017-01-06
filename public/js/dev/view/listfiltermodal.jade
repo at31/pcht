@@ -1,0 +1,33 @@
+﻿#modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog(role='document')
+		.modal-content
+			.modal-header
+				button#close-modal-cross-btn.close(type='button', data-dismiss='modal', aria-label='Close')
+					span(aria-hidden='true') ×
+				h4#myModalLabel.modal-title Фильтр
+			.modal-body
+				form(action='')
+					.form-group
+						label(for='') заголовок
+						input#event-title.form-control.l-query(type='text' data-lquery-name='title' )
+					.form-group
+						label(for='') начало
+						input#datebegin.form-control.l-query.flatpickr(type='text' data-lquery-name='start'  )
+					.form-group
+						label(for='') окончание
+						input#dateend.form-control.l-query.flatpickr(type='text' data-lquery-name='end'  )
+					.form-group
+						label(for='') отделение получатель
+						input#postcode.form-control.l-query(type='text' data-lquery-name='postalCode' )
+					.form-group
+						label(for='') описание
+						input#description.form-control.l-query(type='text' data-lquery-name='description' )
+					.form-group
+						label(for='') статус
+						input#status.form-control.l-query(type='text' data-lquery-name='status' )
+					.form-group
+						label(for='') исполнитель
+						input#executor.form-control.l-query(type='text' data-lquery-name='executor' )
+			.modal-footer
+				button#close-modal-btn.btn.btn-secondary(type='button', data-dismiss='modal') Close
+				button#load-filter-list-btn.btn.btn-primary(type='button') Сформировать

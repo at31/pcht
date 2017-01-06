@@ -1,0 +1,18 @@
+﻿body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#cy {
+  height: 800px;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.flatpickr-calendar{
+	z-index: 10000;
+}

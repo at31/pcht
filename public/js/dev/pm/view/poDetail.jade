@@ -1,0 +1,27 @@
+﻿#modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog(role='document')
+		.modal-content
+			.modal-header
+				button#close-modal-cross-btn.close(type='button', data-dismiss='modal', aria-label='Close')
+					span(aria-hidden='true') ×
+				h4#myModalLabel.modal-title Детально - #{data.postalCode}
+			.modal-body
+				.card
+					h3.card-header #{data.postalCode}
+					.card-block
+						h4.card-title #{data.postalCode} #{data.settlement} #{data.addressSource}
+						.card-text
+							h4 Предоставляемые услуги
+							ul
+							each sg in data.serviceGroups
+								li #{sg.serviceGroupName}
+							h4 Телефоны
+							ul			
+							each phone in data.phones
+								li  (#{phone.phoneTownCode}) #{phone.phoneNumber} (#{phone.phoneTypeName})
+							h4 Время работы		
+							ul
+							each wh in data.workingHours
+								li #{wh.weekDayName}	
+			.modal-footer
+				button#close-modal-btn.btn.btn-secondary(type='button', data-dismiss='modal') Close

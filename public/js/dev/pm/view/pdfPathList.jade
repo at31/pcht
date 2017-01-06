@@ -1,0 +1,5 @@
+﻿each po in data
+	|#{po.postalCode} \br
+	-if (po.evnts.length>0)
+		each evnt in po.evnts
+			| #{evnt.title} \br
