@@ -1,5 +1,7 @@
 ﻿ul
 	each evnt in data
-		li #{evnt.title}
+		li.evnt-li(data-evnt-id='#{evnt._id}') #{evnt.title}
+			a.show-evnt-detail(href='#')
+				i.fa.fa-search.fa-fw
 			a.remove-evnt-list(href='#')
 				i.fa.fa-trash-o.fa-fw
