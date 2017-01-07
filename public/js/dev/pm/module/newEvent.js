@@ -42,11 +42,11 @@ module.exports = function() {
 				contentType: "application/json",
 				success: function(data) {
 					console.log("data save");
-					var evntArray = $('#calendar').fullCalendar('clientEvents');
-					var _evnt = evntArray[evntArray.length - 1];
-					_evnt._id = data.insertedid;
+					//var evntArray = $('#calendar').fullCalendar('clientEvents');
+					//var _evnt = evntArray[evntArray.length - 1];
+				//	_evnt._id = data.insertedid;
 
-					$('#calendar').fullCalendar('updateEvent', _evnt);
+				//	$('#calendar').fullCalendar('updateEvent', _evnt);
 				},
 				//error: ajaxError
 			});

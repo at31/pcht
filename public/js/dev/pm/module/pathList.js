@@ -38,11 +38,19 @@ module.exports = function() {
 		var rarr = [];
 		$.ajax({
 			type: 'GET',
-			url: "./testevent.json",
+			//url: "./testevent.json",
+			url:"/users/evnt/"+_data.postalCode,
 			dataType: "json",
 			success: function(data) {
 				console.log('success load data');
-				rarr = data.filter(function(evnt) {
+				console.log(data);
+				_data.evnts=data;
+				$('[data-po-id=' + _data.postalCode + ']').find('i.fa-spinner').remove();
+				$('[data-po-id=' + _data.postalCode + ']').append(self.nestedListJade({
+						"data": data
+				}));
+				$('[data-po-id=' + _data.postalCode + ']').on('click', self.listenEvnt);
+				/*rarr = data.filter(function(evnt) {
 					if (evnt.postalCode == _data.postalCode) {
 						return true;
 					}
@@ -58,10 +66,11 @@ module.exports = function() {
 					//$('.evnt-li').children('.remove-evnt-list').on('click',self.removeEvnt);					
 					//$('[data-po-id='+ _data.postalCode+']').on('click',self.showEvntDetail);
 					$('[data-po-id=' + _data.postalCode + ']').on('click', self.listenEvnt);
-				}, /*Math.floor(Math.random() * 10000)*/ 10);
+				}, /*Math.floor(Math.random() * 10000)*/ /*10);*/
 			},
 			error: function(err) {
-				//console.log(err);
+				console.log('ошибка (');
+				console.log(err);
 			}
 		});
 

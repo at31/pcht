@@ -34,6 +34,37 @@ router.get('/', function(req, res, next) {
 	}
 });
 
+
+/* GET  */
+router.get('/evnt/:indx', function(req, res, next) {
+	
+	console.log(req.params.indx);
+
+	// Use connect method to connect to the server
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to server");
+
+		findDocuments(db, function(docs) {
+			db.close();
+
+			res.json(docs);
+		});
+	});
+
+
+	var findDocuments = function(db, callback) {
+		// Get the documents collection
+		var collection = db.collection('evnt');
+		// Find some documents
+		collection.find({postalCode:req.params.indx}).toArray(function(err, docs) {
+			assert.equal(err, null);
+			callback(docs);
+		});
+	}
+});
+
+
 router.post('/save', function(req, res, next) {
 	console.log(req.body);
 
@@ -55,7 +86,7 @@ router.post('/save', function(req, res, next) {
 		req.body.end = new Date(req.body.end);
 
 
-		db.collection('test').insertOne(req.body, function(err, r) {
+		db.collection('evnt').insertOne(req.body, function(err, r) {
 			assert.equal(null, err);
 			assert.equal(1, r.insertedCount);
 			res.json({
