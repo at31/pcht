@@ -16,6 +16,29 @@ module.exports = function() {
 	var _event, _postOfficeArr;
 	var myCollection = new ymaps.GeoObjectCollection();
 	var _route;
+	
+	var myBalloonContentBodyLayout = ymaps.templateLayoutFactory.createClass(
+				'<p>$[properties.data.postalCode]</p><p>$[properties.data.addressSource]</p><p>$[properties.data.typeCode]</p><br /><button id="show-po-detail-btn">Подробно</button><br /><button id="add-to-path-btn">В список</button>', {
+					build: function() {
+						myBalloonContentBodyLayout.superclass.build.call(this);
+						$('#show-po-detail-btn').on('click', {
+							"po": this._data.properties._data
+						}, this.onShowPODetailClick);
+						$('#add-to-path-btn').on('click', {
+							"po": this._data.properties._data
+						}, this.onAddToPathClick);
+					},
+					clear: function() {
+						$('#show-po-detail-btn').off('click', this.onShowPODetailClick);
+						myBalloonContentBodyLayout.superclass.clear.call(this);
+					},
+					onShowPODetailClick: function(e) {
+						poDetail.init(e.data.po.data, myMap);
+					},
+					onAddToPathClick:function(e){
+						pathList.addElement(e.data.po.data);
+					}
+			});
 
 	var myMap = new ymaps.Map("mapy", {
 		center: [50.59, 36.58],
@@ -37,6 +60,14 @@ module.exports = function() {
 				function(route) {
 					_route=route;
 					myMap.geoObjects.add(route);
+					
+					var points = route.getWayPoints();
+					points.options.set('preset', 'islands#blueStretchyIcon');
+        			points.each(function(el, i){
+        				el.properties.set('iconContent',selectedEl[i].postalCode+" точка №"+(i+1));
+        				el.properties.set('balloonContent',selectedEl[i].postalCode+" точка №"+(i+1));
+        			});
+					
 				},
 				function(error) {
 					alert("Возникла ошибка: " + error.message);
@@ -53,30 +84,6 @@ module.exports = function() {
 
 			_postOfficeArr = data;
 			
-
-			var myBalloonContentBodyLayout = ymaps.templateLayoutFactory.createClass(
-				'<p>$[properties.data.postalCode]</p><p>$[properties.data.addressSource]</p><p>$[properties.data.typeCode]</p><br /><button id="show-po-detail-btn">Подробно</button><br /><button id="add-to-path-btn">В список</button>', {
-					build: function() {
-						myBalloonContentBodyLayout.superclass.build.call(this);
-						$('#show-po-detail-btn').on('click', {
-							"po": this._data.properties._data
-						}, this.onShowPODetailClick);
-						$('#add-to-path-btn').on('click', {
-							"po": this._data.properties._data
-						}, this.onAddToPathClick);
-					},
-					clear: function() {
-						$('#show-po-detail-btn').off('click', this.onShowPODetailClick);
-						myBalloonContentBodyLayout.superclass.clear.call(this);
-					},
-					onShowPODetailClick: function(e) {
-						poDetail.init(e.data.po.data, myMap);
-					},
-					onAddToPathClick:function(e){
-						pathList.addElement(e.data.po.data);
-					}
-				});
-
 			data.forEach(function(otd) {
 
 				var pmark = new ymaps.Placemark([otd.latitude, otd.longitude],					
