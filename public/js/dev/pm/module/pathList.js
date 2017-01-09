@@ -98,15 +98,27 @@ module.exports = function() {
 							$(e.target).parent().parent().remove();
 						} else {
 							var _event = self.selectedEL[i].evnts[j];
+							
 							$('.modal-place').html(self.evntDetailJade());
-							$(".flatpickr").flatpickr({
+							/*$(".flatpickr").flatpickr({
 								enableTime: true,
-							});
+							});*/
 
 							$('#modal').modal('show');
+							
+							$("#datebegin").flatpickr({
+							utc: true,
+							defaultDate: moment(_event.start).format('YYYY-MM-DD hh:mm'),
+							enableTime: true,
+							});
+							$("#dateend").flatpickr({
+							utc: true,
+							defaultDate: moment(_event.end).format('YYYY-MM-DD hh:mm'),
+							enableTime: true,
+							});
 
-							//$('#datebegin').val(_event.start.format('YYYY-MM-DD hh:mm'));
-							//$('#dateend').val(_event.end.format('YYYY-MM-DD hh:mm'));
+						//	$('#datebegin').val(moment(_event.start).format('YYYY-MM-DD hh:mm'));
+						//	$('#dateend').val(moment(_event.end).format('YYYY-MM-DD hh:mm'));
 							$('#event-title').val(_event.title);
 							$('#postcode').val(_event.postalCode);
 							$('#status').val(_event.status);

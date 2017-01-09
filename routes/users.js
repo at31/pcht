@@ -65,6 +65,42 @@ router.get('/evnt/:indx', function(req, res, next) {
 });
 
 
+/* GET  map-reduce*/
+router.get('/mr', function(req, res, next) {
+	
+	console.log(req.params.indx);
+
+	// Use connect method to connect to the server
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to server");
+
+		findDocuments(db, function(docs) {
+			db.close();
+
+			res.json(docs);
+		});
+		
+		/*var collection = db.collection('evnt');
+		collection.aggregate([{"$match":{"status":{$ne:"0"}}},{"$group":{_id:"$postalCode",count:{"$sum":1}}}],function(err,result){
+			console.log(result);
+		});*/
+	});
+
+
+	var findDocuments = function(db,callback) {
+		// Get the documents collection
+		var collection = db.collection('evnt');
+		// Find some documents
+		collection.aggregate([{"$match":{"status":{$ne:"0"}}},{"$group":{_id:"$postalCode",count:{"$sum":1}}}]).toArray(function(err, docs) {
+			assert.equal(err, null);
+			callback(docs);
+		});
+	}
+});
+
+
+
 router.post('/save', function(req, res, next) {
 	console.log(req.body);
 
@@ -95,6 +131,42 @@ router.post('/save', function(req, res, next) {
 		});
 	}
 });
+
+router.post('/save/multi', function(req, res, next) {
+	console.log(req.body);
+
+	// Use connect method to connect to the server
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected successfully to server");
+
+		insertDoc(db, function() {
+			db.close();
+		});
+	});
+
+
+	var insertDoc = function(db, callback) {
+
+		req.body.forEach(function(evnt){
+			evnt.start = new Date(req.body.start);	
+			evnt.end = new Date(req.body.end);
+		});
+		//req.body.start = new Date(req.body.start);
+		//req.body.end = new Date(req.body.end);
+
+
+		db.collection('evnt').insert(req.body, function(err, r) {
+			assert.equal(null, err);
+		//	assert.equal(1, r.insertedCount);
+			res.json({
+				"insertedid": r.insertedId
+			});
+		});
+	}
+});
+
+
 
 router.post('/update/:id', function(req, res, next) {
 
