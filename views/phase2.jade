@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	body
+		.container-fluid
+			.row
+				#master-place.col-md-12 
+					#bc-place.row
+						nav.breadcrumb
+							a#map-load-link.breadcrumb-item(href='#') Map
+							a#new-evnt-link.breadcrumb-item(href='#') Новая заявка
+							// span class="breadcrumb-item active">Bootstrap</span
+					.row
+						.col-md-6
+							form.form-inline
+								input#ponum.form-control(type='text', placeholder='308031', value='308031')
+								a#po-centr-btn.btn.btn-primary(href='#') в центр
+						.col-md-6
+							.form-check.form-check-inline
+								label.form-check-label
+									input#inlineRadio1.form-check-input(type='radio', name='filtermap', value='0')
+									|  0
+							.form-check.form-check-inline
+								label.form-check-label
+									input#inlineRadio2.form-check-input(type='radio', name='filtermap', value='1')
+									|  >=1
+							.form-check.form-check-inline
+								label.form-check-label
+									input#inlineRadio3.form-check-input(type='radio', name='filtermap', value='3')
+									| >=3
+							a#do-filter-btn.btn.btn-primary(href='#') фильтр
+					.row
+						.col-md-3.list-place
+						.col-md-6.c-place
+							// div id="mapy" style="width: 100%; height: 800px"></div>
+						.col-md-3.l-place
+					.row
+		// Modal
+		.modal-place
+		script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
+		script(type='text/javascript', src='js/vendors.js')
+		script(type='text/javascript', src='js/pdfmake.min.js')
+		script(type='text/javascript', src='js/vfs_fonts.js')
+		script(type='text/javascript', src='js/phase2app.js')

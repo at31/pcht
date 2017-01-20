@@ -68,6 +68,7 @@ router.get('/evnt/:indx', function(req, res, next) {
 /* GET  map-reduce*/
 router.get('/mr', function(req, res, next) {
 	
+	
 	console.log(req.params.indx);
 
 	// Use connect method to connect to the server
@@ -272,6 +273,15 @@ router.post('/emaillist', function(req, res, next) {
 	});
 
 	return res.json({"status":"ok"});
+});
+
+router.get('/cc', function(req,res){
+     res.clearCookie('testcook');
+     res.send('Cookie deleted');
+});
+
+router.get('/sc', function(req,res){
+     res.cookie('testcook' , 'cookie_value_4_testcook').send('Cookie is set');
 });
 
 

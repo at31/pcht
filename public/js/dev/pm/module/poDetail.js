@@ -1,4 +1,4 @@
-﻿'use srtict';
+'use srtict';
 
 module.exports=function(){
 

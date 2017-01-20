@@ -1,0 +1,10 @@
+.row.justify-content-center
+	form.col-md-6
+		.form-group
+			label(for='emailInput') Email address
+			input#emailInput.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+			small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+		.form-group
+			label(for='passInput') Password
+			input#passInput.form-control(type='password', placeholder='Password')
+		a#login-btn.btn.btn-success(href='#') Войти

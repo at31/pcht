@@ -11,7 +11,9 @@ var AsyncModulePlugin = require('async-module-loader/plugin');
 module.exports = {
     entry: {
         app: "./public/js/dev/app.js",
-        pathapp:"./public/js/dev/pm/app.js", 
+        pathapp:"./public/js/dev/pm/app.js",
+        login:"./public/js/dev/pm/login.js",
+        phase2app:"./public/js/dev/pm/phase2app.js",
         vendor: ['moment','jquery', 'bootstrap', 'fullcalendar','flatpickr','cytoscape'/*,'pdfmake'*/]
     },
     output: {

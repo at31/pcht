@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	body
+		.container-fluid
+			.row
+				#master-place.col-md-12 
+					.row
+						form.col-md-6.offset-md-3
+							h4.msg=status
+							.form-group
+								label(for='emailInput') Email address
+								input#emailInput.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+								small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+							.form-group
+								label(for='passInput') Password
+								input#passInput.form-control(type='password', placeholder='Password')
+							.form-group
+								label(for='roleInput') Role
+								input#roleInput.form-control(type='text', placeholder='role')
+							a#login-btn.btn.btn-success(href='#') Войти
+							a#create-user-btn.btn.btn-default(href='#') Создать пользователя
+		// Modal
+		.modal-place
+		script(type='text/javascript', src='js/vendors.js')
+		script(type='text/javascript', src='js/login.js')
