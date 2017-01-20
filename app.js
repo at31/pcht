@@ -7,11 +7,12 @@ var bodyParser = require('body-parser');
 var session = require('express-session')
 var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var evnt = require('./routes/evnt');
 var login = require('./routes/login');
 var phase1 = require('./routes/phase1');
 var phase2 = require('./routes/phase2');
 var crossroad = require('./routes/crossroad');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/evnt', evnt);
 app.use('/login', login);
 app.use('/phase1', phase1);
 app.use('/phase2', phase2);

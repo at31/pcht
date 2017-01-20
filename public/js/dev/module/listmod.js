@@ -47,7 +47,7 @@
 
 					$.ajax({
 						type: 'POST',
-						url: '/users/emaillist',
+						url: '/evnt/emaillist',
 						data: JSON.stringify(emailtxt),
 						dataType: "json",
 						contentType: "application/json",
@@ -77,7 +77,7 @@
 
 		$.ajax({
 			type: 'POST',
-			url: '/users/lquery',
+			url: '/evnt/lquery',
 			data: JSON.stringify(lquery),
 			dataType: "json",
 			contentType: "application/json",

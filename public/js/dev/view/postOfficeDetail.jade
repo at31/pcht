@@ -8,11 +8,11 @@
 			each sg in data.serviceGroups
 				li #{sg.serviceGroupName}
 			h4 Телефоны
-			ul			
+			ul
 			each phone in data.phones
 				li  (#{phone.phoneTownCode}) #{phone.phoneNumber} (#{phone.phoneTypeName})
-			h4 Время работы		
+			h4 Время работы
 			ul
 			each wh in data.workingHours
-				li #{wh.weekDayName}	
+				li #{wh.weekDayName}
 		a.btn.btn-primary.show-net(href='#') show me the Net in tha place

@@ -39,7 +39,7 @@ module.exports = function() {
 		$.ajax({
 			type: 'GET',
 			//url: "./testevent.json",
-			url:"/users/evnt/"+_data.postalCode,
+			url:"/evnt/evnt/"+_data.postalCode,
 			dataType: "json",
 			success: function(data) {
 				console.log('success load data');

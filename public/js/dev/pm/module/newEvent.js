@@ -42,7 +42,7 @@ module.exports = function() {
 				
 				$.ajax({
 					type: 'POST',
-					url: '/users/save/multi',
+					url: '/evnt/save/multi',
 					data: JSON.stringify(evnts),
 					dataType: "json",
 					contentType: "application/json",
@@ -67,7 +67,7 @@ module.exports = function() {
 
 				$.ajax({
 					type: 'POST',
-					url: '/users/save',
+					url: '/evnt/save',
 					data: JSON.stringify(evnt),
 					dataType: "json",
 					contentType: "application/json",
