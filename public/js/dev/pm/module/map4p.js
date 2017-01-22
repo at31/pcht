@@ -100,7 +100,7 @@ module.exports = function() {
 
 			$.ajax({
 				type: 'GET',
-				url: '/users/mr',
+				url: '/evnt/mr',
 				dataType: 'json',
 				success: function(mrdata) {
 

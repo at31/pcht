@@ -4,19 +4,18 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 var mongodb = require('mongodb');
 var crypto = require('crypto');
+var settings=require('./settings');
 
-// User API
 // Connection URL
-var url = 'mongodb://localhost:27017/test';
+//var url = 'mongodb://localhost:27017/test';
+var url=settings.dbURL;
 
 //login
 router.post('/', function(req, res, next) {
     
-    console.log(req.body);
-    
     MongoClient.connect(url, function(err, db) {
         var collection = db.collection('users');
-        collection.findOne({ email: req.body.email }).then(function(user) {
+        collection.findOne({ login: req.body.login }).then(function(user) {
             if(user){
                 console.log(user);    
             }else{
@@ -50,24 +49,22 @@ router.post('/', function(req, res, next) {
 
 
 });
-//create new
-router.post('/new', function(req, res, next) {
-    MongoClient.connect(url, function(err, db) {
-        var collection = db.collection('users');
-        var _user={email:req.body.email,pass:hash(req.body.pass),role:req.body.role};
-        collection.insertOne(_user).then(function(user) {
-            console.log(user);
-            assert.equal(1, user.insertedCount);
-            res.json({"status":"Пользователь создан, авторизируйтесь"});
-            db.close();
 
-        }, function(err){
-            console.log('not find user');
-            console.log(err);
-             db.close();
-            res.json({"status":"Ошибка создания пользователя (DB error)"});
-        });
-    });
+
+router.get('/in', function(req, res, next) {
+    if(req.session.user){
+        console.log(req.session.user);
+        if(req.session.user.role=='admin'){
+            console.log('/phase1 redirect');
+            res.redirect('/phase1');    
+        }else if(req.session.user.role=='user'){
+            console.log('phase2 redirect');
+            res.redirect('./phase2');
+        }
+        
+    }else{
+        res.redirect('/');
+    }    
 });
 //log out
 router.post('/out', function(req, res, next) {

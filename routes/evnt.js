@@ -3,10 +3,11 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 var mongodb = require('mongodb');
+var settings=require('./settings');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/test';
-
+//var url = 'mongodb://localhost:27017/test';
+var url=settings.dbURL;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
