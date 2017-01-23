@@ -13,6 +13,7 @@ var phase1 = require('./routes/phase1');
 var phase2 = require('./routes/phase2');
 var crossroad = require('./routes/crossroad');
 var users = require('./routes/users');
+var lists = require('./routes/lists');
 
 var app = express();
 
@@ -55,6 +56,7 @@ app.use('/login', login);
 app.use('/phase1', phase1);
 app.use('/phase2', phase2);
 app.use('/crossroad', crossroad);
+app.use('/lists', lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

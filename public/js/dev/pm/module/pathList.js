@@ -9,16 +9,50 @@ module.exports = function() {
 	this.evntDetailJade = require('../view/editdelEvent.jade');
 	this.ymapCeatePath = {};
 	this.selectedEL = [];
+	this.users=[];
 
 	var self = this;
 
-	this.init = function(yMapCreatePath) {
-		$('.l-place').html(self.plJade());
+	this.init = function(yMapCreatePath) {		
 		//self.myMap=myMap;
 		self.ymapCeatePath = yMapCreatePath;
-		$('#clear-plist-btn').on('click', self.removeAll);
-		$('#create-path-btn').on('click', self.createPath);
-		$('#print-path-btn').on('click', self.pdfPath);
+		
+
+		$.get('/users/all', function(data){
+			self.users=data;
+			$('.l-place').html(self.plJade({'users':data}));
+			$('#clear-plist-btn').on('click', self.removeAll);
+			$('#create-path-btn').on('click', self.createPath);
+			$('#print-path-btn').on('click', self.pdfPath);
+			$('#assing-user-btn').on('click',function(e){
+
+				e.stopPropagation();
+				e.preventDefault();
+
+				var _uval=$('#users-list').val();
+				var _evnts=[];
+				self.selectedEL.forEach(function(op){
+					if(op.evnts){
+						op.evnts.forEach(function(evnt){
+							_evnts.push(evnt._id);
+						});
+					}
+				});
+				var list={userID:_uval, evntIDs:_evnts};
+				$.ajax({
+					type: 'POST',
+					url: '/lists/new',
+					data: JSON.stringify(list),
+					dataType: "json",
+					contentType: "application/json",
+					success: function(data) {
+						console.log("data save");
+					},
+					//error: ajaxError
+				});				
+
+			});
+		});		
 
 	};
 

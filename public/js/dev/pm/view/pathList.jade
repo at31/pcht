@@ -11,5 +11,10 @@
 		//input#execemail.form-control(type='email')
 		a#create-path-btn.btn.btn-primary(href='#') создать маршрут
 	.card-footer.text-muted
+		.form-group
+			label(for='users-list') Исполнитель
+			select#users-list.form-control
+				each user in users
+					option(value="#{user._id}") #{user.fio}
 		a#print-path-btn.btn.btn-primary(href='#') печатать
-		a#other-path-btn.btn.btn-default(href='#') еще чего-то
+		a#assing-user-btn.btn.btn-default(href='#') назначить исполнителя
