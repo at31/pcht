@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 module.exports = function() {
 
@@ -7,9 +7,11 @@ module.exports = function() {
 	this.nestedListJade = require('../view/sublist.jade');
 	this.pdfJade = require('../view/pdfPathList.jade');
 	this.evntDetailJade = require('../view/editdelEvent.jade');
+	this.listsJade = require('../view/lists.jade');
 	this.ymapCeatePath = {};
 	this.selectedEL = [];
 	this.users=[];
+	this.lists={};
 
 	var self = this;
 
@@ -21,6 +23,7 @@ module.exports = function() {
 		$.get('/users/all', function(data){
 			self.users=data;
 			$('.l-place').html(self.plJade({'users':data}));
+			$('.list-place').html(self.listsJade({'users':data}));
 			$('#clear-plist-btn').on('click', self.removeAll);
 			$('#create-path-btn').on('click', self.createPath);
 			$('#print-path-btn').on('click', self.pdfPath);
@@ -32,10 +35,17 @@ module.exports = function() {
 				var _uval=$('#users-list').val();
 				var _evnts=[];
 				self.selectedEL.forEach(function(op){
+					/*var _po={postalCode:op.postalCode, events:[]};
+					if(op.evnts){
+						op.evnts.forEach(function(evnt){
+						_op.evetns.push(evnt._id);
+						});
+					}
+					_events.push(_op);*/
 					if(op.evnts){
 						op.evnts.forEach(function(evnt){
 							_evnts.push(evnt._id);
-						});
+						});	
 					}
 				});
 				var list={userID:_uval, evntIDs:_evnts};
@@ -52,11 +62,36 @@ module.exports = function() {
 				});				
 
 			});
+
+			$.get('/lists/all',function(data){
+				self.lists=data;
+				var _arr=[];
+				var ulListJade=require('../view/ulLists.jade');
+				for (var prop in data){
+					if(data.hasOwnProperty(prop)){
+						_arr.push(data[prop]);
+					}
+				}
+				$('#lists-list').html(ulListJade({'data':_arr}));
+				$('.lists-li').on('click',function(e){
+					self.removeAll();
+					var selectedList=self.lists[$(e.currentTarget).attr('data-list-id')];
+					for(var otdName in selectedList.list){
+						var _otd=selectedList.list[otdName].postalOffice;
+						_otd.evnts=selectedList.list[otdName].evnts;
+						//self.selectedEL.push(_otd);
+						self.addElement(_otd,true);
+					}
+					//console.log($(e.currentTarget).attr('data-list-id'));
+					self.createPath();
+					return false;
+				});
+			});
 		});		
 
 	};
 
-	this.addElement = function(data) {
+	this.addElement = function(data,evntLoaded) {
 		$('#path-list').append(self.elJade({
 			"data": data
 		}));
@@ -64,8 +99,21 @@ module.exports = function() {
 		$('[data-po-id=' + data.postalCode + ']').children('.remove-po-list').on('click', {
 			element: data
 		}, self.removeElement);
-		self.loadEvntData(data);
+		
+		if(evntLoaded){
+			self.showEvnts(data);
+		}else{
+			self.loadEvntData(data);
+		}
 
+	};
+
+	this.showEvnts=function(_data){
+		$('[data-po-id=' + _data.postalCode + ']').find('i.fa-spinner').remove();
+		$('[data-po-id=' + _data.postalCode + ']').append(self.nestedListJade({
+						"data": _data.evnts
+				}));
+		$('[data-po-id=' + _data.postalCode + ']').on('click', self.listenEvnt);
 	};
 
 	this.loadEvntData = function(_data) {
@@ -194,9 +242,10 @@ module.exports = function() {
 
 	};
 	this.removeAll = function(e) {
-		e.stopPropagation();
+		//e.stopPropagation();
 		$('#path-list').html('');
 		self.selectedEL = [];
+		return false;
 	};
 
 	this.createPath = function() {

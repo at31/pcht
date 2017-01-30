@@ -1,0 +1,13 @@
+﻿.card
+	.card-header
+		.form-group
+			label(for='users-list') Исполнитель
+			select#users-list.form-control
+				each user in users
+					option(value="#{user._id}") #{user.fio}
+	.card-block
+		h4.card-title  
+		.card-text
+			h4 Списки 	
+				#lists-list
+	.card-footer.text-muted

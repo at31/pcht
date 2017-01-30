@@ -48,6 +48,8 @@ module.exports = function() {
 		buttonMaxWidth: 150
 	});
 
+	initMap();
+
 	function createPath(selectedEl) {
 		$('#po-centr-btn').off();
 		_postOfficeArr = [];
@@ -90,110 +92,112 @@ module.exports = function() {
 		}
 	}
 
-	$.ajax({
-		type: 'GET',
-		url: "./postals.json",
-		dataType: "json",
-		success: function(data) {
+	function initMap() {
+		$.ajax({
+			type: 'GET',
+			url: "./postals.json",
+			dataType: "json",
+			success: function(data) {
 
-			data.sort(sortComparator);
+				data.sort(sortComparator);
 
-			$.ajax({
-				type: 'GET',
-				url: '/evnt/mr',
-				dataType: 'json',
-				success: function(mrdata) {
+				$.ajax({
+					type: 'GET',
+					url: '/evnt/mr',
+					dataType: 'json',
+					success: function(mrdata) {
 
-					mrdata.sort(sortComparator);
-
-					data.forEach(function(otd) {
-
-						otd.evntTotal = '0';
-						mrdata.forEach(function(mr) {
-							if (otd.postalCode == mr._id) {
-								otd.evntTotal = mr.count;
-								return;
-							}
-						});
-
-						var stl = 'islands#darkgreenStretchyIcon';
-						if (otd.evntTotal >= '1') {
-							stl = 'islands#darkblueStretchyIcon';
-						}
-						if (otd.evntTotal >= '3') {
-							stl = 'islands#violetStretchyIcon';
-						}
-
-						var pmark = new ymaps.Placemark([otd.latitude, otd.longitude], {
-							data: otd,
-							iconContent: otd.postalCode + " / " + otd.evntTotal,
-							iconCaption: otd.postalCode
-						}, {
-							balloonContentLayout: myBalloonContentBodyLayout,
-							preset: stl
-						});
-						myCollection.add(pmark);
-					});
-
-					_postOfficeArr = data;
-					myMap.geoObjects.add(myCollection);
-					pathList.init(createPath);
-
-
-					$('#po-centr-btn').on('click', function(e) {
-						var ponom = $('#ponum').val();
-						_postOfficeArr.forEach(function(po) {
-							if (po.postalCode == ponom) {
-								myMap.setCenter([po.latitude, po.longitude], 13, {
-									checkZoomRange: true
-								});
-								return;
-							}
-						});
-					});
-
-					$('#do-filter-btn').on('click', function(e) {
-						var _range = $('input[name="filtermap"]:checked').val();
-						myCollection.removeAll();
+						mrdata.sort(sortComparator);
 
 						data.forEach(function(otd) {
-							if (otd.evntTotal >= parseInt(_range)) {
-								var stl = 'islands#darkgreenStretchyIcon';
-								if (otd.evntTotal >= '1') {
-									stl = 'islands#darkblueStretchyIcon';
-								}
-								if (otd.evntTotal >= '3') {
-									stl = 'islands#violetStretchyIcon';
-								}
 
-								var pmark = new ymaps.Placemark([otd.latitude, otd.longitude], {
-									data: otd,
-									iconContent: otd.postalCode + " / " + otd.evntTotal,
-									iconCaption: otd.postalCode
-								}, {
-									balloonContentLayout: myBalloonContentBodyLayout,
-									preset: stl
-								});
-								myCollection.add(pmark);
+							otd.evntTotal = '0';
+							mrdata.forEach(function(mr) {
+								if (otd.postalCode == mr._id) {
+									otd.evntTotal = mr.count;
+									return;
+								}
+							});
+
+							var stl = 'islands#darkgreenStretchyIcon';
+							if (otd.evntTotal >= '1') {
+								stl = 'islands#darkblueStretchyIcon';
 							}
+							if (otd.evntTotal >= '3') {
+								stl = 'islands#violetStretchyIcon';
+							}
+
+							var pmark = new ymaps.Placemark([otd.latitude, otd.longitude], {
+								data: otd,
+								iconContent: otd.postalCode + " / " + otd.evntTotal,
+								iconCaption: otd.postalCode
+							}, {
+								balloonContentLayout: myBalloonContentBodyLayout,
+								preset: stl
+							});
+							myCollection.add(pmark);
 						});
-						
+
+						_postOfficeArr = data;
 						myMap.geoObjects.add(myCollection);
-						
-					});
+						pathList.init(createPath);
 
 
-				},
-				error: function(err) {
-					console.log(err);
+						$('#po-centr-btn').on('click', function(e) {
+							var ponom = $('#ponum').val();
+							_postOfficeArr.forEach(function(po) {
+								if (po.postalCode == ponom) {
+									myMap.setCenter([po.latitude, po.longitude], 13, {
+										checkZoomRange: true
+									});
+									return;
+								}
+							});
+						});
+
+						$('#do-filter-btn').on('click', function(e) {
+							var _range = $('input[name="filtermap"]:checked').val();
+							myCollection.removeAll();
+
+							data.forEach(function(otd) {
+								if (otd.evntTotal >= parseInt(_range)) {
+									var stl = 'islands#darkgreenStretchyIcon';
+									if (otd.evntTotal >= '1') {
+										stl = 'islands#darkblueStretchyIcon';
+									}
+									if (otd.evntTotal >= '3') {
+										stl = 'islands#violetStretchyIcon';
+									}
+
+									var pmark = new ymaps.Placemark([otd.latitude, otd.longitude], {
+										data: otd,
+										iconContent: otd.postalCode + " / " + otd.evntTotal,
+										iconCaption: otd.postalCode
+									}, {
+										balloonContentLayout: myBalloonContentBodyLayout,
+										preset: stl
+									});
+									myCollection.add(pmark);
+								}
+							});
+
+							myMap.geoObjects.add(myCollection);
+
+						});
 
 
-				}
-			});
+					},
+					error: function(err) {
+						console.log(err);
 
-		},
-		//error: loadError
-	});
+
+					}
+				});
+
+			},
+			//error: loadError
+		});
+	}
 
 	return myMap;
 }
