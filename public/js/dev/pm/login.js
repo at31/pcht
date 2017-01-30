@@ -68,12 +68,15 @@ $(document).ready(function() {
 						
 						console.log(data);
 						
-						if(data.status=='login')
-							
-						    window.location.href = "/login/in";
-						
+						if(data.status=='login'){
+							window.location.href = "/login/in";
+						}else if(data.status=='err'){
+							$('.msg').html(data.text);
+						}
 					},
-					//error: ajaxError
+					error: function(err){
+						$('.msg').html(err);
+					}
 				});
     });
 

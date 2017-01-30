@@ -17,24 +17,35 @@ router.post('/', function(req, res, next) {
         var collection = db.collection('users');
         collection.findOne({ login: req.body.login }).then(function(user) {
             if(user){
-                console.log(user);    
-            }else{
-                console.log('нет такого...');
-            }
-            
             //передача пароля открытым способом не хорошая идея, надо на клиенте делать хэш... временно оставил
-            if(user.pass==hash(req.body.pass)){
-                req.session.user = {id: user._id, name: user.name, role:user.role};
-				res.json({"status":"login"});
+                if(user.pass==hash(req.body.pass)){
+                    req.session.user = {id: user._id, name: user.name, role:user.role};
+                    res.json({
+                            "status":"login",
+                            "text": "авторизация - успешно"
+                        });
+                }else{
+                    res.json({
+                            "status":"err",
+                            "text": "Не верный пароль"
+                        });
+                }
             }else{
-                res.json({"status":"Невреный пароль"});
-            }
+                res.json({
+                        "status":"err",
+                        "text": "Пользователь не существует"
+                    });
+                console.log('нет такого...');
+            }                    
 
             db.close();
         }, function(err){
             console.log('db error');
             console.log(err);
-            res.json('{"status":"db error"}');
+            res.json({
+                        "status":"err",
+                        "text": "db error"
+                    });
             db.close(); 
         });
     });
