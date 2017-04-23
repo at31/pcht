@@ -35,20 +35,21 @@ module.exports = function() {
 				var _uval=$('#users-list').val();
 				var _evnts=[];
 				self.selectedEL.forEach(function(op){
-					/*var _po={postalCode:op.postalCode, events:[]};
+					var _po={postalCode:op.postalCode, evnts:[]};
 					if(op.evnts){
 						op.evnts.forEach(function(evnt){
-						_op.evetns.push(evnt._id);
+						_po.evnts.push(evnt._id);
 						});
 					}
-					_events.push(_op);*/
-					if(op.evnts){
+					_evnts.push(_po);
+				/*	if(op.evnts){
 						op.evnts.forEach(function(evnt){
 							_evnts.push(evnt._id);
 						});	
-					}
+					}*/
 				});
 				var list={userID:_uval, evntIDs:_evnts};
+				console.log(list);
 				$.ajax({
 					type: 'POST',
 					url: '/lists/new',

@@ -11,7 +11,117 @@ var settings=require('./settings');
 var url=settings.dbURL;
 /* GET all users*/
 router.get('/all', function(req, res, next) {
+
 	MongoClient.connect(url, function(err, db) {
+		var collection = db.collection('lists');
+			collection.aggregate([
+			//{$match:{userID:new mongodb.ObjectID(req.params.id)}},		
+				{
+     			 $unwind: "$evntIDs"
+   				},				
+				{
+				  $lookup:{	from:"postoffices",
+							localField:"evntIDs.postalCode",
+							foreignField:"postalCode", 
+							as:"postalOffice"}
+				},
+				{
+					$unwind:"$postalOffice"
+				},
+				{
+					$unwind:{"path": "$evntIDs.evnts", "preserveNullAndEmptyArrays": true }
+					
+				},
+				{
+				  $lookup:{	from:"evnt",
+							localField:"evntIDs.evnts",
+							foreignField:"_id", 
+							as:"evnt"}
+				},
+				{
+					$unwind:{"path":"$evnt","preserveNullAndEmptyArrays":true}
+				},
+				{
+				  $lookup:{	from:"users",
+							localField:"userID",
+							foreignField:"_id", 
+							as:"user"}
+				},
+				{
+					$unwind:"$user"
+				},
+				{
+					$project:
+					{
+						"user.login":1,
+						"user.email":1,
+						"user.role":1,
+						"user.fio":1,
+						"evnt":1,
+						"postalOffice":1
+					}
+				}/*,
+				{ 
+					$group :
+					{ 
+						_id :
+						{
+							ID:"$_id", postalOffice:"$postalOffice"
+						},
+						user:{$first:"$user"}, 
+						listEvents: 
+						{ 
+							$addToSet: "$evnt" 
+						} 
+					} 
+				}*/
+
+			]).toArray().then(function(r){
+
+				db.close();	
+
+				var obj={};
+				r.forEach(function(mbs){
+
+					var _evnts=[];
+					if(mbs.evnt)
+					{
+						_evnts.push(mbs.evnt);
+					}
+
+					if(!obj.hasOwnProperty(mbs._id)){
+
+						var _l={};
+						_l[mbs.postalOffice.postalCode]={
+									postalOffice:mbs.postalOffice,
+									evnts:_evnts
+								};
+						console.log(mbs.postalOffice.postalCode);							
+						obj[mbs._id]={
+							_id:mbs._id,
+							user:mbs.user,
+							list:_l
+						};						
+					}else{
+						var _l=obj[mbs._id].list;						
+						if(!_l.hasOwnProperty(mbs.postalOffice.postalCode)){
+							_l[mbs.postalOffice.postalCode]={
+									postalOffice:mbs.postalOffice,
+									evnts:_evnts
+								};
+						}else{
+							_l[mbs.postalOffice.postalCode].evnts.push(_evnts);
+						}
+					}
+				});
+				
+				return res.json(obj);
+				//return res.json(r);
+
+			});
+	});
+
+	/*MongoClient.connect(url, function(err, db) {
 		var collection = db.collection('lists');
 			collection.aggregate([
 			//{$match:{userID:new mongodb.ObjectID(req.params.id)}},		
@@ -88,133 +198,239 @@ router.get('/all', function(req, res, next) {
 				
 				return res.json(obj);
 			});
-	});
+	});*/
 });
 
 router.get('/evntsbylist/:listID', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {
 		var collection = db.collection('lists');
-		collection.aggregate([
+			collection.aggregate([
 			{$match:{_id:new mongodb.ObjectID(req.params.listID)}},		
 				{
      			 $unwind: "$evntIDs"
-   				},
+   				},				
+				{
+				  $lookup:{	from:"postoffices",
+							localField:"evntIDs.postalCode",
+							foreignField:"postalCode", 
+							as:"postalOffice"}
+				},
+				{
+					$unwind:"$postalOffice"
+				},
+				{
+					$unwind:{"path": "$evntIDs.evnts", "preserveNullAndEmptyArrays": true }
+					
+				},
 				{
 				  $lookup:{	from:"evnt",
-							localField:"evntIDs",
+							localField:"evntIDs.evnts",
 							foreignField:"_id", 
-							as:"listEvents"}},
+							as:"evnt"}
+				},
 				{
-    			  $match: { "listEvents": { $ne: [] } }
-   				},
-
-   				{
-
-   					$lookup:{
-   						from:"users",
-						localField:"userID",
-						foreignField:"_id", 
-						as:"userInfo"}
-   				
-   				},		
-   					{ $group : { _id :{ID:"$_id",userID:"$userID",userinfo:"$userInfo"}, listEvents: { $push: "$listEvents" } } }			
-							]).toArray().then(function(r){
-				db.close();
-
-//один список один исполнитель !!!
-				var ro={
-					_id:r[0]._id.ID,
-					user:{
-						_id:r[0]._id.userinfo[0]._id,
-						email:r[0]._id.userinfo[0].email,
-						role:r[0]._id.userinfo[0].role,
-						login:r[0]._id.userinfo[0].login,
-						fio:r[0]._id.userinfo[0].fio
-					},
-					events:r[0].listEvents.map(function(earr){ return earr[0];})
-
+					$unwind:{"path":"$evnt","preserveNullAndEmptyArrays":true}
+				},
+				{
+				  $lookup:{	from:"users",
+							localField:"userID",
+							foreignField:"_id", 
+							as:"user"}
+				},
+				{
+					$unwind:"$user"
+				},
+				{
+					$project:
+					{
+						"user.login":1,
+						"user.email":1,
+						"user.role":1,
+						"user.fio":1,
+						"evnt":1,
+						"postalOffice":1
+					}
 				}
 
+			]).toArray().then(function(r){
 
-				return res.json(ro);
+				db.close();	
+
+				var obj={};
+				r.forEach(function(mbs){
+
+					var _evnts=[];
+					if(mbs.evnt)
+					{
+						_evnts.push(mbs.evnt);
+					}
+
+					if(!obj.hasOwnProperty(mbs._id)){
+
+						var _l={};
+						_l[mbs.postalOffice.postalCode]={
+									postalOffice:mbs.postalOffice,
+									evnts:_evnts
+								};
+						console.log(mbs.postalOffice.postalCode);							
+						obj[mbs._id]={
+							_id:mbs._id,
+							user:mbs.user,
+							list:_l
+						};						
+					}else{
+						var _l=obj[mbs._id].list;						
+						if(!_l.hasOwnProperty(mbs.postalOffice.postalCode)){
+							_l[mbs.postalOffice.postalCode]={
+									postalOffice:mbs.postalOffice,
+									evnts:_evnts
+								};
+						}else{
+							_l[mbs.postalOffice.postalCode].evnts.push(_evnts);
+						}
+					}
+				});
+				
+				return res.json(obj);
+
 			});
-	});
+});
 });
 
 
 router.get('/user/:id', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {
 		var collection = db.collection('lists');
-
 			collection.aggregate([
-			{$match:{userID:new mongodb.ObjectID(req.params.id)}},		
+			{$match:{userID:new mongodb.ObjectID(req.params.id)}},	
 				{
      			 $unwind: "$evntIDs"
-   				},
-				{
-				  $lookup:{	from:"evnt",
-							localField:"evntIDs",
-							foreignField:"_id", 
-							as:"listEvents"}
-				},				
-				{
-    			  $match: { "listEvents": { $ne: [] } }
-   				},
-   				{
-					$unwind:"$listEvents",
-				},
+   				},				
 				{
 				  $lookup:{	from:"postoffices",
-							localField:"listEvents.postalCode",
+							localField:"evntIDs.postalCode",
 							foreignField:"postalCode", 
 							as:"postalOffice"}
 				},
 				{
 					$unwind:"$postalOffice"
+				},
+				{
+					$unwind:{"path": "$evntIDs.evnts", "preserveNullAndEmptyArrays": true }
+					
+				},
+				{
+				  $lookup:{	from:"evnt",
+							localField:"evntIDs.evnts",
+							foreignField:"_id", 
+							as:"evnt"}
+				},
+				{
+					$unwind:{"path":"$evnt","preserveNullAndEmptyArrays":true}
+				},
+				{
+				  $lookup:{	from:"users",
+							localField:"userID",
+							foreignField:"_id", 
+							as:"user"}
+				},
+				{
+					$unwind:"$user"
+				},
+				{
+					$project:
+					{
+						"user.login":1,
+						"user.email":1,
+						"user.role":1,
+						"user.fio":1,
+						"evnt":1,
+						"postalOffice":1
+					}
 				}
-				//{ $group : { _id :{ID:"$_id",userID:"$userID", postalOffice:"$postalOffice"}, listEvents: { $addToSet: "$listEvents" } } }								
-   // 				{ $group : { _id :{ID:"$_id",userID:"$userID"}, listEvents001: { $push: "$listEvents" } } }			
-   				//{ $group : { _id :{ID:"$_id",userID:"$userID"}, listEvents: { $addToSet: "$listEvents" } } }			
-							]).toArray().then(function(r){
+
+			]).toArray().then(function(r){
 
 				db.close();	
 
 				var obj={};
 				r.forEach(function(mbs){
+
+					var _evnts=[];
+					if(mbs.evnt)
+					{
+						_evnts.push(mbs.evnt);
+					}
+
 					if(!obj.hasOwnProperty(mbs._id)){
+
 						var _l={};
 						_l[mbs.postalOffice.postalCode]={
 									postalOffice:mbs.postalOffice,
-									evnts:[mbs.listEvents]
+									evnts:_evnts
 								};
 						console.log(mbs.postalOffice.postalCode);							
 						obj[mbs._id]={
 							_id:mbs._id,
-							userID:mbs.userID,
+							user:mbs.user,
 							list:_l
 						};						
 					}else{
-						var _l=obj[mbs._id].list;
+						var _l=obj[mbs._id].list;						
 						if(!_l.hasOwnProperty(mbs.postalOffice.postalCode)){
 							_l[mbs.postalOffice.postalCode]={
 									postalOffice:mbs.postalOffice,
-									evnts:[mbs.listEvents]
+									evnts:_evnts
 								};
 						}else{
-							_l[mbs.postalOffice.postalCode].evnts.push(mbs.listEvents);
+							_l[mbs.postalOffice.postalCode].evnts.push(_evnts);
 						}
 					}
 				});
 				
 				return res.json(obj);
-			});
-	});
 
+			});
+
+	}); 
 });
 
 router.post('/new', function(req, res, next) {
+//new
+	req.body.evntIDs.forEach(function(obj){
+		if(obj.evnts.length>0){
+			var elist=obj.evnts.map(function(ids){
+				return new mongodb.ObjectID(ids);
+				});
+			obj.evnts=elist;
+		}
+	});
+	req.body.userID=new mongodb.ObjectID(req.body.userID);
+	
+	MongoClient.connect(url, function(err, db) {
+		var collection = db.collection('lists');
+		console.log(req.body);
+		collection.insertOne(req.body).then(function(list) {
+					assert.equal(1, list.insertedCount);
+					res.json({
+						"status":"ok",
+						"text": "Список сохранен",
+						"_id":list._id
+					});
+					db.close();
 
-	var elist=req.body.evntIDs.map(function(ids){
+				}, function(err) {
+					db.close();
+					res.json({
+						"status":"err",
+						"text": "Ошибка создания списка (DB error)"
+					});
+				});
+	});
+
+
+//old
+/*	var elist=req.body.evntIDs.map(function(ids){
 		return new mongodb.ObjectID(ids);
 	});
 	MongoClient.connect(url, function(err, db) {
@@ -240,17 +456,19 @@ router.post('/new', function(req, res, next) {
 						"text": "Ошибка создания списка (DB error)"
 					});
 				});
-	});
+	});*/
 });
 
 router.post('/update', function(req, res, next) {
-	var elist=req.body.evntIDs.map(function(ids){
-		return new mongodb.ObjectID(ids);
+	req.body.evntIDs.forEach(function(obj){
+		if(obj.evnts.length>0){
+			var elist=obj.evnts.map(function(ids){
+				return new mongodb.ObjectID(ids);
+				});
+			obj.evnts=elist;
+		}
 	});
-	var _list= {
-			userID: new mongodb.ObjectID(req.body.userID),
-			evntIDs:elist
-		};
+	req.body.userID=new mongodb.ObjectID(req.body.userID);
 
 	MongoClient.connect(url, function(err, db) {		
 		var collection = db.collection('lists');

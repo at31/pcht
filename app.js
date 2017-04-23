@@ -14,6 +14,7 @@ var phase2 = require('./routes/phase2');
 var crossroad = require('./routes/crossroad');
 var users = require('./routes/users');
 var lists = require('./routes/lists');
+var po = require('./routes/PostOffice');
 
 var app = express();
 
@@ -41,13 +42,13 @@ app.use(session({
 
 
 //CORS
-/*app.use(function(req,res,next){
+app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials","true");
   res.header("Access-Control-Allow-Method", "GET,POST,PUT,DELETE");
   res.header("Access-Control-Allow-Method", "Content-Type");
   next();
-});*/
+});
 
 app.use('/', routes);
 app.use('/users', users);
@@ -57,6 +58,7 @@ app.use('/phase1', phase1);
 app.use('/phase2', phase2);
 app.use('/crossroad', crossroad);
 app.use('/lists', lists);
+app.use('/po', po);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
