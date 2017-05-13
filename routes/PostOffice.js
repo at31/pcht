@@ -24,7 +24,8 @@ router.get('/all', function(req, res, next) {
 				]).toArray().then(function(r){
 
 				db.close();							
-				 return res.json(r);
+				res.setHeader('Last-Modified', (new Date()).toUTCString());
+				return res.json(r);
 
 			});
 	});

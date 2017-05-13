@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 
 	var findDocuments = function(db, callback) {
 		// Get the documents collection
-		var collection = db.collection('test');
+		var collection = db.collection('evnt');
 		// Find some documents
 		collection.find({}).toArray(function(err, docs) {
 			assert.equal(err, null);
@@ -162,7 +162,7 @@ router.post('/save/multi', function(req, res, next) {
 			assert.equal(null, err);
 		//	assert.equal(1, r.insertedCount);
 			res.json({
-				"insertedid": r.insertedId
+				"insertedcount": r.insertedCount
 			});
 		});
 	}

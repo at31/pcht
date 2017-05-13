@@ -45,8 +45,9 @@ app.use(session({
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials","true");
-  res.header("Access-Control-Allow-Method", "GET,POST,PUT,DELETE");
-  res.header("Access-Control-Allow-Method", "Content-Type");
+  res.header("Access-Control-Allow-Method", "GET,POST,PUT,DELETE, OPTIONS");
+  //res.header("Access-Control-Allow-Method", "Content-Type");
+  res.setHeader('Access-Control-Allow-Headers', 'origin, Content-Type, Accept');
   next();
 });
 
