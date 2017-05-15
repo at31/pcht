@@ -4,6 +4,7 @@ var MongoClient = require('mongodb').MongoClient,
 	assert = require('assert');
 var mongodb = require('mongodb');
 var settings=require('./settings');
+var moment =require('moment');
 
 // Connection URL
 //var url = 'mongodb://localhost:27017/test';
@@ -151,8 +152,9 @@ router.post('/save/multi', function(req, res, next) {
 	var insertDoc = function(db, callback) {
 
 		req.body.forEach(function(evnt){
-			evnt.start = new Date(req.body.start);	
-			evnt.end = new Date(req.body.end);
+			evnt.start = moment(req.body.start).toDate();
+			console.log(evnt.start);	
+			evnt.end = moment(req.body.end).toDate();
 		});
 		//req.body.start = new Date(req.body.start);
 		//req.body.end = new Date(req.body.end);
