@@ -13,7 +13,7 @@ var phase1 = require('./routes/phase1');
 var phase2 = require('./routes/phase2');
 var crossroad = require('./routes/crossroad');
 var users = require('./routes/users');
-var lists = require('./routes/lists');
+var lists = require('./routes/lists2');
 var po = require('./routes/PostOffice');
 
 var app = express();
