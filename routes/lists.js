@@ -578,4 +578,32 @@ router.get('/test',function(req,res,next){
 });
 
 
+
+//////////////////////////////////////
+/*
+db.l2.aggregate({$lookup:{from:"users",
+                          localField:"executor",
+                          foreignField:"_id",
+                          as:"executor"  }
+                          },{$unwind:"$executor"},
+                          {$unwind:"$evnts"},
+                 {$lookup:{from:"evnt",
+                          localField:"evnts.evnt",
+                          foreignField:"_id",
+                          as:"evnt"  
+                     }},{$unwind:"$evnt"},
+         {$match:{"evnt.title":"01"}},
+         {$project:{"_id":1,"title":1,"description":1,"created":1,"createdDate":1,"executor":1,"evnt":1}
+         },
+         {$group:
+             {_id:"$_id",
+              title:{$max:"$title"},      
+              evnts:{$push:"$evnt"}   
+                 }}
+                )
+*/
+
+
+
+
 module.exports = router;
