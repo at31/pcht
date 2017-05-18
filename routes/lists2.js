@@ -61,7 +61,8 @@ router.get('/all', function(req, res, next) {
 						"executor._id":1,
 						"executor.role":1,
 						"executor.email":1,
-						"evnt":1
+						"evnt":1,
+						"path":1
 					}
 				},
 				{
@@ -73,9 +74,12 @@ router.get('/all', function(req, res, next) {
 						created:{$max:"$created"},
 						createdDate:{$max:"$createdDate"},
 						executor:{$max:"$executor"},
-						evnts:{$push:"$evnt"}
+						evnts:{$push:"$evnt"},
+						path:{$max:"$path"}
+
 					}
-				}],function(err,result){
+				}
+				],function(err,result){
 					test.equal(null,err);
 					res.setHeader('Last-Modified', (new Date()).toUTCString());
 					res.json(result);
