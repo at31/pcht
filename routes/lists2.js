@@ -89,6 +89,7 @@ router.get('/all', function(req, res, next) {
 });
 
 
+
 router.post('/new', function(req, res, next) {
 //new
 	req.body.evnts.forEach(function(evnt){
@@ -121,25 +122,28 @@ router.post('/new', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-	req.body.evntIDs.forEach(function(obj){
-		if(obj.evnts.length>0){
-			var elist=obj.evnts.map(function(ids){
-				return new mongodb.ObjectID(ids);
-				});
-			obj.evnts=elist;
-		}
+	
+	req.body.evnts.forEach(evnt=>{
+		evnt.evnt=new mongodb.ObjectID(evnt.evnt);
 	});
-	req.body.userID=new mongodb.ObjectID(req.body.userID);
+	req.body.created=new mongodb.ObjectID(req.body.created);
+	req.body.executor=new mongodb.ObjectID(req.body.executor);
 
 	MongoClient.connect(url, function(err, db) {		
 		var collection = db.collection('l2');
 		collection.findOneAndUpdate({
-			_id: new mongodb.ObjectID(req.body._id)},{$set:_list}).then(function(list) {
-			return res.json(list);
-
+			_id: new mongodb.ObjectID(req.body._id)},
+			{$set:{
+				titile:req.body.title,
+				description:req.body.description,
+				path:req.body.path,
+				evnts:req.body.evnts
+				//created and createdDate нельзя модифицировать!!!
+			}
+			}).then(function(evnt) {
+			return res.json(evnt);
 				db.close();		
 		});
-
 	});
 });
 
