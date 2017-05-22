@@ -14,6 +14,9 @@ router.get('/all', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {
 		var collection = db.collection('users');
 		collection.find({}).toArray().then(function(usersarr) {
+			usersarr.forEach(user=>{
+				user.pass="";
+			});
 			return res.json(usersarr);
 			db.close();
 		});
@@ -83,8 +86,8 @@ router.post('/new', function(req, res, next) {
 router.post('/update', function(req, res, next) {
 
 	var _user = {
-			//email: req.body.email,
-			//pass: hash(req.body.pass),
+			email: req.body.email,
+			pass: hash(req.body.pass),
 			role: req.body.role,
 			login: req.body.login,
 			fio: req.body.fio,
@@ -93,7 +96,7 @@ router.post('/update', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {		
 		var collection = db.collection('users');
 		collection.findOneAndUpdate({
-			_id: new mongodb.ObjectID(req.bodu._id)},{$set:_user}).then(function(user) {
+			_id: new mongodb.ObjectID(req.body._id)},{$set:_user}).then(function(user) {
 			return res.json(user);
 
 				db.close();		
@@ -102,10 +105,11 @@ router.post('/update', function(req, res, next) {
 	});
 });
 
-router.delete('/del', function(req, res, next) {
+router.post('/del', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {		
 		var collection = db.collection('users');
-		collection.findOneAndDdelete({_id: new mongodb.ObjectID(req.body._id)}).then(function(r) {
+		console.log(req.body);
+		collection.findOneAndDelete({_id: new mongodb.ObjectID(req.body._id)}).then(function(r) {
 			assert.equal(1, r.lastErrorObject.n);
         	assert.equal(req.body._id, r.value._id);
 			return res.json({
