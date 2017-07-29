@@ -70,6 +70,7 @@ module.exports = {
             test: /\.jade$/,
             loader: "jade"
         },
+        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
     ]
 }
 };

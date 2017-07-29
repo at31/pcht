@@ -211,6 +211,7 @@ router.post('/update/:id', function(req, res, next) {
 
 });
 
+
 router.delete('/del/:id', function(req, res, next) {
 	console.log(req.params.id);
 	MongoClient.connect(url, function(err, db) {
@@ -231,6 +232,53 @@ router.delete('/del/:id', function(req, res, next) {
 		});
 	});
 });
+
+// total del from list an avent collections, rebuild lists (l2 collection)
+router.post('/tdel', function(req, res, next) {
+	let listarr= [];
+
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		console.log("Connected correctly to server");
+		console.log(req.body);
+		db.collection('l2').find({"evnts.evnt":new mongodb.ObjectID(req.body.id)})
+		.toArray()
+		.then(function(docs, err){
+			if(err)
+				console.log(err);
+			console.log(docs);
+		//	db.close();
+		if(docs.length>0){
+			docs.forEach(list=>{
+				let newlist=Object.assign({},list);
+				newlist.evnts=list.evnts.filter(evnt=>evnt.evnt!=req.body._id);
+				newlist.path=[... new Set(newlist.evnts.map(evnt=>evnt.postalCode))];
+				listarr.push(newlist);
+				delete newlist._id;
+				console.log(newlist);
+				db.collection('l2').updateOne({_id: new mongodb.ObjectID(list._id)},
+					{$set:{
+						
+					}
+				}, 
+					{upsert:true}).then(r=>{
+						assert.equal(0, r.matchedCount);
+    					assert.equal(1, r.upsertedCount);
+					});
+
+				});
+		}
+			
+			});
+		/*db.collection('evnt').deleteOne({_id:new mongodb.ObjectID(req._id)}).then((err,r)=>{
+			assert.equal(null,err);
+			assert.equla(1,r.deletedCount);
+			});*/
+		db.close();
+		res.json({"delete":"ok"});
+		});
+
+	});
 
 
 router.post('/lquery', function(req, res, next) {

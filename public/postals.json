@@ -25,6 +25,8 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308005",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
+
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -110,6 +112,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308571",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ПОПС",
@@ -224,6 +227,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308000",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -314,6 +318,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308009",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -414,6 +419,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308026",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -504,6 +510,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308001",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -606,6 +613,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308961",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -701,6 +709,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308015",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -803,6 +812,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308014",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -905,6 +915,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308020",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1000,6 +1011,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308002",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1102,6 +1114,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308007",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1204,6 +1217,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308012",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1306,6 +1320,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308027",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1425,6 +1440,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308024",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1544,6 +1560,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308006",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1663,6 +1680,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308034",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1758,6 +1776,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308011",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1865,6 +1884,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308033",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -1967,6 +1987,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308019",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2086,6 +2107,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308004",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2188,6 +2210,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308018",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2290,6 +2313,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308032",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2404,6 +2428,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308036",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2502,6 +2527,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308017",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2604,6 +2630,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308016",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2699,6 +2726,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308010",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2818,6 +2846,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308031",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -2920,6 +2949,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308013",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -3039,6 +3069,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308025",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -3142,6 +3173,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308508",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Зеленая Поляна",
         "typeCode": "СОПС",
@@ -3249,6 +3281,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308029",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Белгород",
         "typeCode": "ГОПС",
@@ -3352,6 +3385,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308501",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Дубовое",
         "typeCode": "СОПС",
@@ -3455,6 +3489,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308518",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Новосадовый",
         "typeCode": "СОПС",
@@ -3570,6 +3605,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308519",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Северный",
         "typeCode": "ГОПС",
@@ -3673,6 +3709,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308511",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Стрелецкое",
         "typeCode": "СОПС",
@@ -3764,6 +3801,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308515",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Ближняя Игуменка",
         "typeCode": "СОПС",
@@ -3862,6 +3900,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308589",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Вергелевка",
         "typeCode": "СОПС",
@@ -3965,6 +4004,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308570",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Беломестное",
         "typeCode": "СОПС",
@@ -4061,6 +4101,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308510",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Разумное",
         "typeCode": "ГОПС",
@@ -4170,6 +4211,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308517",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Беловское",
         "typeCode": "СОПС",
@@ -4266,6 +4308,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308504",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Таврово",
         "typeCode": "СОПС",
@@ -4362,6 +4405,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308513",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Пушкарное",
         "typeCode": "СОПС",
@@ -4458,6 +4502,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308503",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Майский",
         "typeCode": "СОПС",
@@ -4561,6 +4606,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308514",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Комсомольский",
         "typeCode": "СОПС",
@@ -4657,6 +4703,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308541",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Крутой Лог",
         "typeCode": "СОПС",
@@ -4753,6 +4800,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308572",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Хохлово",
         "typeCode": "СОПС",
@@ -4849,6 +4897,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309060",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Терновка",
         "typeCode": "СОПС",
@@ -4945,6 +4994,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308527",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Ерик",
         "typeCode": "СОПС",
@@ -5041,6 +5091,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309235",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Дальняя Игуменка",
         "typeCode": "СОПС",
@@ -5131,6 +5182,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308516",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Мясоедово",
         "typeCode": "СОПС",
@@ -5229,6 +5281,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309086",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Федоренков",
         "typeCode": "СОПС",
@@ -5327,6 +5380,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308585",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Новая Нелидовка",
         "typeCode": "СОПС",
@@ -5430,6 +5484,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308505",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Никольское",
         "typeCode": "СОПС",
@@ -5526,6 +5581,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308584",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Головино",
         "typeCode": "СОПС",
@@ -5622,6 +5678,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308580",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Веселая Лопань",
         "typeCode": "СОПС",
@@ -5718,6 +5775,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309201",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Мелихово",
         "typeCode": "СОПС",
@@ -5814,6 +5872,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308586",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Политотдельский",
         "typeCode": "СОПС",
@@ -5922,6 +5981,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "309276",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Маслова Пристань",
         "typeCode": "ГОПС",
@@ -6013,6 +6073,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309050",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Гостищево",
         "typeCode": "СОПС",
@@ -6109,6 +6170,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309200",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Шляхово",
         "typeCode": "СОПС",
@@ -6205,6 +6267,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309253",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Никольское",
         "typeCode": "СОПС",
@@ -6298,6 +6361,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "309070",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Строитель",
         "typeCode": "ГОПС",
@@ -6394,6 +6458,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309062",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Строитель",
         "typeCode": "ПОПС",
@@ -6504,6 +6569,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309041",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Строитель",
         "typeCode": "ПОПС",
@@ -6619,6 +6685,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "308581",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Бессоновка",
         "typeCode": "СОПС",
@@ -6715,6 +6782,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309252",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Кошлаково",
         "typeCode": "СОПС",
@@ -6823,6 +6891,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "309071",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Строитель",
         "typeCode": "ГОПС",
@@ -6914,6 +6983,7 @@
             "weekDayName": "ВТОРНИК"
         },
         "postalCode": "309202",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Шеино",
         "typeCode": "СОПС",
@@ -7010,6 +7080,7 @@
             "weekDayName": "ПОНЕДЕЛЬНИК"
         },
         "postalCode": "308590",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Октябрьский",
         "typeCode": "ГОПС",
@@ -7103,6 +7174,7 @@
         "longitude": 36.406967,
         "nearestOfficePostalCode": "308571",
         "postalCode": "308595",
+        "comps":[{"id":"101","title":"комп 101","soft":[{"id":"softId4Comp101","title":"some title"}]}],
         "region": "Белгородская обл",
         "settlement": "Варваровка",
         "temporaryClosedReason": "другое",

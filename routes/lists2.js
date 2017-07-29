@@ -136,8 +136,9 @@ router.post('/update', function(req, res, next) {
 			{$set:{
 				titile:req.body.title,
 				description:req.body.description,
-				path:req.body.path,
-				evnts:req.body.evnts
+				executor:req.body.executor
+				//path:req.body.path,
+				//evnts:req.body.evnts
 				//created and createdDate нельзя модифицировать!!!
 			}
 			}).then(function(evnt) {
@@ -147,12 +148,12 @@ router.post('/update', function(req, res, next) {
 	});
 });
 
-router.delete('/del', function(req, res, next) {
+router.post('/del', function(req, res, next) {
 	MongoClient.connect(url, function(err, db) {		
 		var collection = db.collection('l2');
 		collection.findOneAndDelete({_id: new mongodb.ObjectID(req.body._id)}).then(function(r) {
-			assert.equal(1, r.lastErrorObject.n);
-        	assert.equal(req.body._id, r.value._id);
+			test.equal(1, r.lastErrorObject.n);
+        	test.equal(req.body._id, r.value._id);
 			return res.json({
 						"status":"ok",
 						"text": "Список удален"
